@@ -30,7 +30,9 @@
                         <div class="col-12">
                             <h1 class="text-center display-1">Todo List</h1>
                             <ul class="list-group mb-3">
-                                <li class="list-group-item">task</li>
+                                <li v-for="task in tasks" :key="task" class="list-group-item">
+                                    {{task}}
+                                </li>
                             </ul>
                         </div>
                     </div>
