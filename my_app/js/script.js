@@ -7,6 +7,13 @@ const app = createApp ({
         return {
             tasks: []
         }
+    },
+    created(){
+        // Chiamata con Axios
+        axios.get('http://localhost:8888/php-todo-list-json/api/tasks/')
+        .then(res => {
+            this.tasks = res.data;
+        });
     }
 })
 
