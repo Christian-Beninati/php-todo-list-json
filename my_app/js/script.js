@@ -5,7 +5,14 @@ const { createApp } = Vue;
 const app = createApp ({
     data (){
         return {
-            tasks: []
+            tasks: [],
+            newTask: ''
+        }
+    },
+    methods: {
+        addTask(){
+            console.log(this.newTask);
+            
         }
     },
     created(){
