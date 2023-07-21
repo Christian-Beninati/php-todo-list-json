@@ -19,9 +19,6 @@ if ($new_task) {
     $json_tasks = json_encode($tasks);
     // Mando a file_put_contents convertito in Json
     file_put_contents($database, $json_tasks);
-
-    // Avviso che la risposta e' in Json
-    header('Content-Type: application/json');
 }
 
 // Avviso che la risposta e' in Json
