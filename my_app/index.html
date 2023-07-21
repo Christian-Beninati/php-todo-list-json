@@ -43,10 +43,12 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="add item...">
-                                <button class="btn btn-outline-dark" type="button" id="button-add">Add</button>
-                            </div>
+                            <form @submit.prevent="addTask">
+                                <div class="input-group">
+                                    <input v-model.trim="newTask" type="text" class="form-control" placeholder="add item...">
+                                    <button class="btn btn-outline-dark" type="submit" id="button-add">Add</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
