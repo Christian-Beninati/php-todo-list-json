@@ -16,11 +16,14 @@ const app = createApp ({
 
             // Preparo le configurazioni
             const config = {
-                headers: { 'Content-Type': 'x-www-form-urlencoded'}
+                headers: { 'Content-Type': 'application/json'}
             }
 
             axios.post('http://localhost:8888/php-todo-list-json/api/tasks/' , data , config)
-            .then(res => { console.log('dato inviato, ok') });
+            .then(res => { 
+                this.tasks = res.data;
+                this.newTask = '';
+            });
         }
     },
     created(){
