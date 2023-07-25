@@ -8,16 +8,19 @@ $json_data = file_get_contents($database);
 // Trasformo in PHP (in array)
 $tasks = json_decode($json_data, true);
 
+// Leggo i dati JSON grezzi inviati tramite POST
+$input_data = file_get_contents('php://input');
+$input_data = json_decode($input_data, true); // Decodifica i dati JSON in un array
 
-//  Controlliamo se abbiamo qualcosa in POST
-$new_task = $_POST['task'] ?? null;
-if ($new_task) {
-    // Aggiungo new_task a tasks
-    $tasks[]  = $new_task;
+// Verifico se la chiave 'task' esiste nel JSON decodificato
+if (isset($input_data['task'])) {
+    // Aggiungo la nuova attività all'array tasks
+    $tasks[] = $input_data['task'];
 
-    // Converto in Json
+    // Converto l'array tasks aggiornato in JSON
     $json_tasks = json_encode($tasks);
-    // Mando a file_put_contents convertito in Json
+
+    // Salvo i dati JSON aggiornati nel file
     file_put_contents($database, $json_tasks);
 }
 
